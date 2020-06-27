@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: ruby_host
+          uri: https://127.0.0.1:8082
+          predicates:
+            - Header=host-type, ruby
+        - id: java_host
+          uri: https://127.0.0.1:8081
+          predicates:
+            - Header=host-type, java
+logging:
+  level:
+    root: error
+    com.ys.gateway: erro
+  file:
+    max-size: 100MB
+    path: logs/gateway

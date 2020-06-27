@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowed-origins: "*"
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+      routes:
+        - id: ruby_host
+          uri: https://api-dev.pooul.com
+          predicates:
+            - Header=host-type, ruby
+        - id: java_host
+          uri: https://127.0.0.1:8081
+          predicates:
+            - Header=host-type, java
+
+logging:
+  level:
+    root: info
+    com.ys.gateway: debug
+  file:
+    max-size: 100MB
+    path: logs/gateway

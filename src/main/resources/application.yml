@@ -1,0 +1,13 @@
+server:
+  port: ${SERVER_PORT:8082}
+spring:
+  profiles:
+    # 当前环境， 开发环境是dev 正式环境是prod
+      active: dev
+logging:
+  level:
+    root: info
+    com.ys.gateway: debug
+  file:
+    max-size: 1GB
+    path: logs/
