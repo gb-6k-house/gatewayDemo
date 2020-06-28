@@ -20,7 +20,7 @@ export default {
   created() {
 				// 填充 
                 this.$http
-                    .post("http://localhost:8080/web/user/session/login_name", {login_name:'alex', password:"123"})
+                    .post("http://localhost:8082/web/user/session/login_name", {login_name:'alex', password:"123"})
                     .then(function(res) {
                        console.log(res)
                     });
